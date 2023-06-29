@@ -73,7 +73,7 @@ def get_kink_events(theta, abs_B):
     # 上一段代码是一个名为get_kink_events的函数定义，该函数接受三个参数：theta，time_length和abs_B。这个函数似乎是在寻找某些事件。
     # 函数的第一步是设置几个阈值，这些阈值决定了事件的性质，如角度、时间等。然后，该函数计算出theta的前50%值，并将其设置为theta的基准值。然后，函数检查基准值是否小于50或大于120，并在这两种情况下将sig设置为1或-1。
     if sig == 0:
-        events_list = []
+        events_list = np.array([])
     else:
         events_list = []
         delta_theta = sig * (theta - theta_base)
@@ -218,7 +218,7 @@ for year_num in [2018]:#, 2020]:  # Matlab里%是注释的意思，对应Python�
 
                 dir_switchback = 'C:/Users/bella/Desktop/pspSB/'
                 filename_switchback = f"(prctile_50)(step_time_threshold_60)psp_kink_events_based_on_theta_BR_timelength_{year}{month}{day}{hour}.mat"
-                save_dict = {'events_time_list_with_julian_time': events_time_list_with_julian_time, 'events_time_list_with_datetime':events_time_list_with_datetime}
+                save_dict = {'events_time_list_with_julian_time': events_time_list_with_julian_time}
                 scipy.io.savemat(dir_switchback + filename_switchback, save_dict)
 #                 filepath_switchback = os.path.join(dir_switchback, filename_switchback)
 #                 scipy.io.savemat(filepath_switchback, {'events_time_list': events_time_list})
